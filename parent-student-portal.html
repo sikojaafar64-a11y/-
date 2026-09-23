@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>بوابة ولي الأمر - قنافذ الرسمية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2A32; --paper:#F6F3EC; --teal:#12594F; --teal-2:#0D3F38; --gold:#C98A2C;
+    --card:#FFFFFF; --line:#E2DED2; --red:#B4433A; --green:#2E7D5B;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#EDEAE1; --paper:#141C20; --teal:#4FA093; --teal-2:#2E5C54; --gold:#E0A94A;
+      --card:#1B252A; --line:#2A363B;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#EDEAE1; --paper:#141C20; --teal:#4FA093; --teal-2:#2E5C54; --gold:#E0A94A;
+    --card:#1B252A; --line:#2A363B;
+  }
+  *{box-sizing:border-box}
+  html{scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans Arabic',sans-serif;line-height:1.6}
+  h1,h2,h3,.brand{font-family:'Tajawal',sans-serif}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;top:env(safe-area-inset-top,0px);background:var(--paper);border-bottom:1px solid var(--line);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:16px;flex-wrap:wrap}
+  .brand{font-weight:900;font-size:1.15rem;color:var(--teal-2)}
+  select{font-family:inherit;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:.9rem}
+  main{padding:28px 0 60px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+  .stat .num{font-family:'Tajawal';font-weight:900;font-size:1.5rem;color:var(--teal-2)}
+  .stat .lbl{font-size:.78rem;opacity:.7;margin-top:4px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:22px}
+  .card h2{margin:0 0 4px;font-size:1.2rem}
+  .card .sub{margin:0 0 16px;opacity:.75;font-size:.88rem}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line);font-size:.92rem}
+  th{opacity:.65;font-weight:500;font-size:.8rem}
+  .bar-bg{background:var(--paper);border-radius:6px;height:8px;overflow:hidden;width:100px}
+  .bar{height:100%;background:var(--teal)}
+  .pill{font-size:.75rem;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px 10px;white-space:nowrap}
+  .pill.warn{background:rgba(180,67,58,.1);border-color:var(--red);color:var(--red)}
+  .tt{display:grid;grid-template-columns:70px 1fr;gap:0}
+  .tt-row{display:contents}
+  .tt-time{padding:10px 8px;font-size:.8rem;opacity:.6;border-bottom:1px solid var(--line)}
+  .tt-slot{padding:10px 8px;border-bottom:1px solid var(--line);font-size:.92rem}
+  .assign-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+  .assign-item:last-child{border-bottom:none}
+  .assign-item h4{margin:0 0 4px;font-size:.95rem}
+  .assign-item p{margin:0;font-size:.8rem;opacity:.65}
+  @media (max-width:600px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    th:nth-child(3),td:nth-child(3){display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <div class="brand">بوابة ولي الأمر — قنافذ الرسمية</div>
+    <select id="childSelect" aria-label="اختر الابن/الابنة">
+      <option data-grade="التمهيدي">نور خالد — الروضة (تمهيدي)</option>
+      <option data-grade="4">سلطان خالد — الصف الرابع</option>
+      <option data-grade="9">مها خالد — الصف التاسع</option>
+    </select>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="stats">
+    <div class="stat"><div class="num" id="statPresent">—</div><div class="lbl">أيام حضور هذا الشهر</div></div>
+    <div class="stat"><div class="num" id="statAbsent">—</div><div class="lbl">أيام غياب</div></div>
+    <div class="stat"><div class="num" id="statAvg">—</div><div class="lbl">المعدل العام</div></div>
+    <div class="stat"><div class="num" id="statPending">—</div><div class="lbl">واجبات مستحقة</div></div>
+  </div>
+
+  <section class="card" id="gradesCard">
+    <h2>العلامات</h2>
+    <p class="sub">آخر تحديث للدرجات في المواد الدراسية.</p>
+    <table>
+      <thead><tr><th>المادة</th><th>العلامة</th><th>التقدّم</th></tr></thead>
+      <tbody id="gradesBody"></tbody>
+    </table>
+  </section>
+
+  <section class="card" id="attendanceCard">
+    <h2>سجل الحضور الأخير</h2>
+    <p class="sub">آخر 5 أيام دراسية.</p>
+    <table>
+      <thead><tr><th>اليوم</th><th>الحالة</th></tr></thead>
+      <tbody id="attBody"></tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>الجدول الدراسي — اليوم</h2>
+    <div class="tt" id="timetable"></div>
+  </section>
+
+  <section class="card">
+    <h2>الواجبات</h2>
+    <p class="sub" id="assignSub"></p>
+    <div id="assignList"></div>
+  </section>
+
+</main>
+
+<script>
+  var DATA = {
+    "التمهيدي": {
+      grades: [
+        {subject:"اللغة العربية", mark:88},
+        {subject:"المهارات الحركية", mark:95},
+        {subject:"الأنشطة الفنية", mark:92}
+      ],
+      attendance: [
+        {day:"الأحد", status:"present"},
+        {day:"الاثنين", status:"present"},
+        {day:"الثلاثاء", status:"present"},
+        {day:"الأربعاء", status:"absent"},
+        {day:"الخميس", status:"present"}
+      ],
+      timetable: [
+        {time:"8:00", slot:"دائرة الصباح"},
+        {time:"9:00", slot:"مهارات القراءة"},
+        {time:"10:00", slot:"استراحة ولعب"},
+        {time:"10:30", slot:"أنشطة فنية"},
+        {time:"11:30", slot:"قصة ونوم القيلولة"}
+      ],
+      assignments: [
+        {title:"إحضار صورة عائلية", due:"2026-09-27", desc:"لنشاط \"عائلتي\""}
+      ]
+    },
+    "4": {
+      grades: [
+        {subject:"اللغة العربية", mark:91},
+        {subject:"الرياضيات", mark:84},
+        {subject:"العلوم", mark:89},
+        {subject:"اللغة الإنجليزية", mark:78}
+      ],
+      attendance: [
+        {day:"الأحد", status:"present"},
+        {day:"الاثنين", status:"present"},
+        {day:"الثلاثاء", status:"absent"},
+        {day:"الأربعاء", status:"present"},
+        {day:"الخميس", status:"present"}
+      ],
+      timetable: [
+        {time:"8:00", slot:"الرياضيات"},
+        {time:"9:00", slot:"اللغة العربية"},
+        {time:"10:00", slot:"استراحة"},
+        {time:"10:30", slot:"العلوم"},
+        {time:"11:30", slot:"اللغة الإنجليزية"}
+      ],
+      assignments: [
+        {title:"تمارين الفصل الثالث", due:"2026-09-28", desc:"رياضيات — صفحة 42"},
+        {title:"تقرير عن دورة الماء", due:"2026-10-02", desc:"علوم"}
+      ]
+    },
+    "9": {
+      grades: [
+        {subject:"اللغة العربية", mark:86},
+        {subject:"الرياضيات", mark:79},
+        {subject:"العلوم", mark:88},
+        {subject:"اللغة الإنجليزية", mark:83},
+        {subject:"الدراسات الاجتماعية", mark:90}
+      ],
+      attendance: [
+        {day:"الأحد", status:"present"},
+        {day:"الاثنين", status:"present"},
+        {day:"الثلاثاء", status:"present"},
+        {day:"الأربعاء", status:"present"},
+        {day:"الخميس", status:"absent"}
+      ],
+      timetable: [
+        {time:"8:00", slot:"الرياضيات"},
+        {time:"9:00", slot:"العلوم"},
+        {time:"10:00", slot:"استراحة"},
+        {time:"10:30", slot:"اللغة الإنجليزية"},
+        {time:"11:30", slot:"الدراسات الاجتماعية"}
+      ],
+      assignments: [
+        {title:"بحث عن الثورة الصناعية", due:"2026-09-30", desc:"دراسات اجتماعية"}
+      ]
+    }
+  };
+
+  function render(){
+    var sel = document.getElementById('childSelect');
+    var grade = sel.options[sel.selectedIndex].dataset.grade;
+    var d = DATA[grade];
+
+    var presentCount = d.attendance.filter(function(a){return a.status==='present';}).length;
+    var absentCount = d.attendance.length - presentCount;
+    var avg = Math.round(d.grades.reduce(function(s,g){return s+g.mark;},0) / d.grades.length);
+    document.getElementById('statPresent').textContent = presentCount;
+    document.getElementById('statAbsent').textContent = absentCount;
+    document.getElementById('statAvg').textContent = avg;
+    document.getElementById('statPending').textContent = d.assignments.length;
+
+    var gb = document.getElementById('gradesBody');
+    gb.innerHTML = "";
+    d.grades.forEach(function(g){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>'+g.subject+'</td><td>'+g.mark+'</td>' +
+        '<td><div class="bar-bg"><div class="bar" style="width:'+g.mark+'%"></div></div></td>';
+      gb.appendChild(tr);
+    });
+
+    var ab = document.getElementById('attBody');
+    ab.innerHTML = "";
+    d.attendance.forEach(function(a){
+      var tr = document.createElement('tr');
+      var pillClass = a.status === 'absent' ? 'pill warn' : 'pill';
+      tr.innerHTML = '<td>'+a.day+'</td><td><span class="'+pillClass+'">'+(a.status==='present'?'حاضر':'غائب')+'</span></td>';
+      ab.appendChild(tr);
+    });
+
+    var tt = document.getElementById('timetable');
+    tt.innerHTML = "";
+    d.timetable.forEach(function(t){
+      var time = document.createElement('div'); time.className='tt-time'; time.textContent=t.time;
+      var slot = document.createElement('div'); slot.className='tt-slot'; slot.textContent=t.slot;
+      tt.appendChild(time); tt.appendChild(slot);
+    });
+
+    var sub = document.getElementById('assignSub');
+    sub.textContent = d.assignments.length + " واجب مستحق حالياً.";
+    var list = document.getElementById('assignList');
+    list.innerHTML = "";
+    d.assignments.forEach(function(a){
+      var div = document.createElement('div');
+      div.className = 'assign-item';
+      div.innerHTML = '<div><h4>'+a.title+'</h4><p>'+a.desc+'</p></div><span class="pill">تسليم: '+a.due+'</span>';
+      list.appendChild(div);
+    });
+  }
+
+  document.getElementById('childSelect').addEventListener('change', render);
+  render();
+</script>
+
+</body>
+</html>

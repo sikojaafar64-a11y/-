@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>لوحة تحكم الإدارة - قنافذ الرسمية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2A32; --paper:#F6F3EC; --teal:#12594F; --teal-2:#0D3F38; --gold:#C98A2C;
+    --card:#FFFFFF; --line:#E2DED2; --red:#B4433A; --green:#2E7D5B;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#EDEAE1; --paper:#141C20; --teal:#4FA093; --teal-2:#2E5C54; --gold:#E0A94A;
+      --card:#1B252A; --line:#2A363B;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#EDEAE1; --paper:#141C20; --teal:#4FA093; --teal-2:#2E5C54; --gold:#E0A94A;
+    --card:#1B252A; --line:#2A363B;
+  }
+  *{box-sizing:border-box}
+  html{scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans Arabic',sans-serif;line-height:1.6}
+  h1,h2,h3,.brand{font-family:'Tajawal',sans-serif}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;top:env(safe-area-inset-top,0px);background:var(--paper);border-bottom:1px solid var(--line);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+  .brand{font-weight:900;font-size:1.15rem;color:var(--teal-2)}
+  .who{font-size:.85rem;opacity:.75}
+  main{padding:28px 0 60px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+  .stat .num{font-family:'Tajawal';font-weight:900;font-size:1.6rem;color:var(--teal-2)}
+  .stat .lbl{font-size:.78rem;opacity:.7;margin-top:4px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:22px}
+  .card h2{margin:0 0 4px;font-size:1.2rem}
+  .card .sub{margin:0 0 16px;opacity:.75;font-size:.88rem}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line);font-size:.92rem}
+  th{opacity:.65;font-weight:500;font-size:.8rem}
+  form{display:grid;gap:12px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  label{display:block;font-size:.85rem;margin-bottom:6px;opacity:.8}
+  input,textarea,select.field{width:100%;font-family:inherit;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.9rem}
+  textarea{min-height:70px;resize:vertical}
+  .btn{display:inline-block;background:var(--teal);color:#fff;padding:11px 22px;border:none;border-radius:8px;font-weight:700;font-size:.9rem;cursor:pointer;font-family:inherit}
+  .btn.danger{background:transparent;color:var(--red);border:1px solid var(--red);padding:6px 14px;font-size:.8rem}
+  .btn:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .row-actions{display:flex;justify-content:space-between;align-items:center;margin-top:4px;flex-wrap:wrap;gap:10px}
+  .status{font-size:.85rem;opacity:.75}
+  .status.ok{color:var(--green);opacity:1;font-weight:700}
+  .news-item{padding:12px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .news-item:last-child{border-bottom:none}
+  .news-item h4{margin:0 0 4px;font-size:.95rem}
+  .news-item p{margin:0;font-size:.82rem;opacity:.7}
+  .pill{font-size:.75rem;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px 10px;white-space:nowrap}
+  @media (max-width:640px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .grid2{grid-template-columns:1fr}
+    th:nth-child(3),td:nth-child(3){display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <div class="brand">لوحة تحكم الإدارة — قنافذ الرسمية</div>
+    <div class="who">أ. محمد العلي · المدير</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="stats">
+    <div class="stat"><div class="num" id="stTotal">—</div><div class="lbl">إجمالي الطلاب</div></div>
+    <div class="stat"><div class="num" id="stTeachers">—</div><div class="lbl">عدد المعلمين</div></div>
+    <div class="stat"><div class="num" id="stClasses">—</div><div class="lbl">عدد الصفوف</div></div>
+    <div class="stat"><div class="num" id="stAdm">—</div><div class="lbl">طلبات تسجيل بانتظار المراجعة</div></div>
+  </div>
+
+  <section class="card">
+    <h2>نشر إعلان جديد</h2>
+    <p class="sub">يظهر فوراً في لوحة الإعلانات على الصفحة الرئيسية وبوابات الأهالي والمعلمين.</p>
+    <form id="newsForm">
+      <div>
+        <label for="nTitle">عنوان الإعلان</label>
+        <input id="nTitle" required placeholder="مثال: عطلة يوم الخميس القادم">
+      </div>
+      <div>
+        <label for="nBody">التفاصيل</label>
+        <textarea id="nBody" placeholder="تفاصيل الإعلان..."></textarea>
+      </div>
+      <div class="row-actions">
+        <button class="btn" type="submit">نشر الإعلان</button>
+        <span class="status" id="newsStatus"></span>
+      </div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>الإعلانات المنشورة</h2>
+    <div id="newsList"></div>
+  </section>
+
+  <section class="card">
+    <h2>الصفوف والشعب</h2>
+    <p class="sub">من الروضة إلى الصف التاسع.</p>
+    <table>
+      <thead><tr><th>الصف</th><th>عدد الشعب</th><th>عدد الطلاب</th></tr></thead>
+      <tbody id="classesBody"></tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>طلبات التسجيل الجديدة</h2>
+    <p class="sub">استمارات وردت من الصفحة الرئيسية بانتظار الموافقة.</p>
+    <table>
+      <thead><tr><th>اسم الطالب</th><th>الصف المطلوب</th><th>الحالة</th><th></th></tr></thead>
+      <tbody id="admissionsBody"></tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>إدارة المستخدمين</h2>
+    <p class="sub">حسابات المعلمين وأولياء الأمور والإدارة.</p>
+    <table>
+      <thead><tr><th>الاسم</th><th>الدور</th><th></th></tr></thead>
+      <tbody id="usersBody"></tbody>
+    </table>
+  </section>
+
+</main>
+
+<script>
+  var CLASSES = [
+    {name:"الروضة", sections:2, students:34},
+    {name:"الأول", sections:2, students:41},
+    {name:"الثاني", sections:2, students:38},
+    {name:"الثالث", sections:2, students:36},
+    {name:"الرابع", sections:2, students:39},
+    {name:"الخامس", sections:1, students:22},
+    {name:"السادس", sections:1, students:25},
+    {name:"السابع", sections:1, students:24},
+    {name:"الثامن", sections:1, students:21},
+    {name:"التاسع", sections:1, students:19}
+  ];
+
+  var admissions = [
+    {name:"لمى سعيد", grade:"الروضة", status:"pending"},
+    {name:"عبدالرحمن فيصل", grade:"الصف الثالث", status:"pending"},
+    {name:"جنى ماجد", grade:"الصف السابع", status:"pending"}
+  ];
+
+  var users = [
+    {name:"سارة يوسف", role:"معلمة"},
+    {name:"خالد النور", role:"ولي أمر"},
+    {name:"محمد العلي", role:"مدير"}
+  ];
+
+  var news = [
+    {title:"بدء التسجيل للعام الدراسي الجديد", body:"التسجيل متاح الآن عبر الصفحة الرئيسية لجميع الصفوف من الروضة إلى التاسع."}
+  ];
+
+  function totalStudents(){ return CLASSES.reduce(function(s,c){return s+c.students;},0); }
+
+  function renderStats(){
+    document.getElementById('stTotal').textContent = totalStudents();
+    document.getElementById('stTeachers').textContent = 18;
+    document.getElementById('stClasses').textContent = CLASSES.reduce(function(s,c){return s+c.sections;},0);
+    document.getElementById('stAdm').textContent = admissions.filter(function(a){return a.status==='pending';}).length;
+  }
+
+  function renderClasses(){
+    var body = document.getElementById('classesBody');
+    body.innerHTML = "";
+    CLASSES.forEach(function(c){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>'+c.name+'</td><td>'+c.sections+'</td><td>'+c.students+'</td>';
+      body.appendChild(tr);
+    });
+  }
+
+  function renderAdmissions(){
+    var body = document.getElementById('admissionsBody');
+    body.innerHTML = "";
+    admissions.forEach(function(a, i){
+      var tr = document.createElement('tr');
+      var pill = a.status === 'approved'
+        ? '<span class="pill" style="border-color:var(--green);color:var(--green)">تمت الموافقة</span>'
+        : '<span class="pill">قيد المراجعة</span>';
+      tr.innerHTML = '<td>'+a.name+'</td><td>'+a.grade+'</td><td>'+pill+'</td>' +
+        '<td>' + (a.status==='pending' ? '<button class="btn" style="padding:6px 14px;font-size:.8rem" data-approve="'+i+'">موافقة</button>' : '') + '</td>';
+      body.appendChild(tr);
+    });
+    document.querySelectorAll('[data-approve]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        admissions[+btn.dataset.approve].status = 'approved';
+        renderAdmissions();
+        renderStats();
+      });
+    });
+  }
+
+  function renderUsers(){
+    var body = document.getElementById('usersBody');
+    body.innerHTML = "";
+    users.forEach(function(u, i){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>'+u.name+'</td><td>'+u.role+'</td>' +
+        '<td><button class="btn danger" data-remove="'+i+'">إزالة</button></td>';
+      body.appendChild(tr);
+    });
+    document.querySelectorAll('[data-remove]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        users.splice(+btn.dataset.remove, 1);
+        renderUsers();
+      });
+    });
+  }
+
+  function renderNews(){
+    var list = document.getElementById('newsList');
+    list.innerHTML = "";
+    news.slice().reverse().forEach(function(n){
+      var div = document.createElement('div');
+      div.className = 'news-item';
+      div.innerHTML = '<div><h4>'+n.title+'</h4><p>'+n.body+'</p></div>';
+      list.appendChild(div);
+    });
+  }
+
+  document.getElementById('newsForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    news.push({
+      title: document.getElementById('nTitle').value,
+      body: document.getElementById('nBody').value || 'بدون تفاصيل إضافية'
+    });
+    this.reset();
+    renderNews();
+    var el = document.getElementById('newsStatus');
+    el.textContent = "تم النشر لجميع البوابات.";
+    el.className = "status ok";
+  });
+
+  renderStats();
+  renderClasses();
+  renderAdmissions();
+  renderUsers();
+  renderNews();
+</script>
+
+</body>
+</html>

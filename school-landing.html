@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مدرسة قنافذ الرسمية - الصفحة الرئيسية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2A32; --paper:#F6F3EC; --teal:#12594F; --teal-2:#0D3F38; --gold:#C98A2C;
+    --card:#FFFFFF; --line:#E2DED2;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#EDEAE1; --paper:#141C20; --teal:#4FA093; --teal-2:#2E5C54; --gold:#E0A94A;
+      --card:#1B252A; --line:#2A363B;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#EDEAE1; --paper:#141C20; --teal:#4FA093; --teal-2:#2E5C54; --gold:#E0A94A;
+    --card:#1B252A; --line:#2A363B;
+  }
+  *{box-sizing:border-box}
+  html{scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans Arabic',sans-serif;line-height:1.7}
+  h1,h2,h3,.brand{font-family:'Tajawal',sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{position:sticky;top:0;top:env(safe-area-inset-top,0px);background:var(--paper);border-bottom:1px solid var(--line);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px}
+  .brand{font-weight:900;font-size:1.3rem;color:var(--teal-2)}
+  .navlinks{display:flex;gap:28px;font-size:.95rem}
+  .navlinks a{color:var(--ink);text-decoration:none;opacity:.85}
+  .navlinks a:hover{opacity:1;text-decoration:underline}
+  .btn{display:inline-block;background:var(--teal);color:#fff;padding:12px 26px;border-radius:8px;text-decoration:none;font-weight:700;font-size:.95rem}
+  .btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .btn.ghost{background:transparent;border:1.5px solid var(--teal);color:var(--teal)}
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  .hero h1{font-size:clamp(1.9rem,4vw,3rem);line-height:1.25;margin:0 0 18px;font-weight:900;max-width:16ch}
+  .hero p{font-size:1.05rem;max-width:46ch;opacity:.85;margin:0 0 28px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .badge{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-size:.85rem;margin-bottom:18px;color:var(--teal-2)}
+  .art{aspect-ratio:4/3;border-radius:18px;background:
+      linear-gradient(135deg, var(--teal) 0%, var(--teal-2) 100%);
+      position:relative;overflow:hidden}
+  .art::before{content:"";position:absolute;inset:0;
+      background-image:repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 2px, transparent 2px 22px)}
+  .art .mark{position:absolute;bottom:20px;right:24px;color:#fff;font-family:'Tajawal';font-weight:900;font-size:1.4rem;opacity:.9}
+  section{padding:56px 0}
+  .section-head{max-width:56ch;margin:0 0 36px}
+  .section-head h2{font-size:1.7rem;margin:0 0 10px}
+  .section-head p{opacity:.8;margin:0}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+  .card h3{margin:0 0 10px;font-size:1.1rem}
+  .card p{margin:0;opacity:.8;font-size:.95rem}
+  .about{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)}
+  .about .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center}
+  .about ul{margin:18px 0 0;padding-right:20px}
+  .about li{margin-bottom:10px}
+  .cta{background:var(--teal-2);color:#fff;text-align:center}
+  .cta h2{color:#fff;font-size:1.8rem;margin:0 0 12px}
+  .cta p{opacity:.85;max-width:50ch;margin:0 auto 28px}
+  .cta .btn{background:var(--gold);color:var(--ink)}
+  footer{padding:44px 0;border-top:1px solid var(--line)}
+  .fgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px;font-size:.95rem}
+  .fgrid h4{margin:0 0 12px;font-size:1rem}
+  .fgrid p, .fgrid a{opacity:.8;display:block;color:var(--ink);text-decoration:none;margin-bottom:6px}
+  .map-ph{margin-top:14px;height:120px;border-radius:10px;background:repeating-linear-gradient(45deg,var(--line),var(--line) 10px,transparent 10px 20px);border:1px solid var(--line)}
+  @media (max-width:760px){
+    .navlinks{display:none}
+    .hero .wrap, .about .wrap{grid-template-columns:1fr}
+    .grid3{grid-template-columns:1fr}
+    .fgrid{grid-template-columns:1fr;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <div class="brand">مدرسة قنافذ الرسمية</div>
+    <nav class="navlinks">
+      <a href="#about">عن المدرسة</a>
+      <a href="#features">لماذا قنافذ الرسمية</a>
+      <a href="#admission">التسجيل</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <a class="btn" href="#admission">سجّل ابنك الآن</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="badge">التسجيل للعام الدراسي مفتوح الآن</span>
+      <h1>بيئة تعليمية تواكب كل خطوة يخطوها طفلك</h1>
+      <p>من أول يوم دراسي وحتى التخرج، نجمع الأسرة والمعلم والإدارة في مكان واحد: متابعة يومية للحضور والعلامات والواجبات، دون انتظار نهاية الفصل.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#admission">ابدأ التسجيل</a>
+        <a class="btn ghost" href="#about">تعرّف على المدرسة</a>
+      </div>
+    </div>
+    <div class="art"><span class="mark">قنافذ</span></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="art" style="aspect-ratio:1/1"><span class="mark">2010</span></div>
+    <div>
+      <h2>عن مدرسة قنافذ الرسمية</h2>
+      <p style="opacity:.85">تأسست مدرسة قنافذ الرسمية لتقديم تعليم متوازن يجمع بين المنهج الأكاديمي القوي وبناء شخصية الطالب، بكادر تعليمي مؤهل ومرافق حديثة.</p>
+      <ul>
+        <li>كادر تعليمي مؤهل بخبرة تتجاوز 10 سنوات</li>
+        <li>صفوف بعدد محدود من الطلاب لمتابعة أقرب</li>
+        <li>أنشطة لا صفية أسبوعية ورحلات تعليمية دورية</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>كل ما يحتاجه ولي الأمر في مكان واحد</h2>
+      <p>بعد التسجيل، تحصل كل أسرة على حساب لمتابعة ابنها لحظة بلحظة.</p>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <h3>تنبيهات فورية</h3>
+        <p>إشعار مباشر عند أي غياب أو إعلان مدرسي مهم، دون الاعتماد على مجموعات واتساب متفرقة.</p>
+      </div>
+      <div class="card">
+        <h3>متابعة العلامات</h3>
+        <p>نتائج الاختبارات الدورية والنهائية تظهر أولاً بأول بدل انتظار بطاقة نهاية الفصل.</p>
+      </div>
+      <div class="card">
+        <h3>حجز مواعيد المعلمين</h3>
+        <p>اختر الوقت المناسب لمقابلة المعلم أو الإدارة دون ازدحام أو تنسيق يدوي.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="admission">
+  <div class="wrap">
+    <h2>سجّل طفلك في دقائق</h2>
+    <p>استمارة تسجيل إلكترونية كاملة: رفع المستندات المطلوبة ودفع رسوم الطلب أونلاين، دون الحاجة لزيارة المدرسة.</p>
+    <a class="btn" href="#contact">ابدأ استمارة التسجيل</a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap fgrid">
+    <div>
+      <h4 class="brand">مدرسة قنافذ الرسمية</h4>
+      <p>نبني اليوم أساس غدهم.</p>
+      <div class="map-ph" role="img" aria-label="موقع المدرسة على الخريطة"></div>
+    </div>
+    <div>
+      <h4>تواصل معنا</h4>
+      <a href="tel:+000000000">هاتف: 00 000 0000</a>
+      <a href="mailto:info@alofoq-school.example">info@alofoq-school.example</a>
+      <p>شارع المدارس، الحي التعليمي</p>
+    </div>
+    <div>
+      <h4>روابط سريعة</h4>
+      <a href="#about">عن المدرسة</a>
+      <a href="#features">لماذا قنافذ الرسمية</a>
+      <a href="#admission">التسجيل</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

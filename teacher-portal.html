@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>بوابة المعلم - قنافذ الرسمية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2A32; --paper:#F6F3EC; --teal:#12594F; --teal-2:#0D3F38; --gold:#C98A2C;
+    --card:#FFFFFF; --line:#E2DED2; --red:#B4433A; --green:#2E7D5B;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#EDEAE1; --paper:#141C20; --teal:#4FA093; --teal-2:#2E5C54; --gold:#E0A94A;
+      --card:#1B252A; --line:#2A363B;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#EDEAE1; --paper:#141C20; --teal:#4FA093; --teal-2:#2E5C54; --gold:#E0A94A;
+    --card:#1B252A; --line:#2A363B;
+  }
+  *{box-sizing:border-box}
+  html{scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans Arabic',sans-serif;line-height:1.6}
+  h1,h2,h3,.brand{font-family:'Tajawal',sans-serif}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;top:env(safe-area-inset-top,0px);background:var(--paper);border-bottom:1px solid var(--line);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:16px;flex-wrap:wrap}
+  .brand{font-weight:900;font-size:1.15rem;color:var(--teal-2)}
+  .who{font-size:.85rem;opacity:.75}
+  select{font-family:inherit;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:.9rem}
+  main{padding:32px 0 60px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:24px}
+  .card h2{margin:0 0 4px;font-size:1.25rem}
+  .card .sub{margin:0 0 18px;opacity:.75;font-size:.9rem}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:right;padding:10px 8px;border-bottom:1px solid var(--line);font-size:.95rem}
+  th{opacity:.65;font-weight:500;font-size:.85rem}
+  .toggle{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .toggle button{border:none;background:var(--card);color:var(--ink);padding:6px 14px;font-size:.85rem;cursor:pointer;font-family:inherit}
+  .toggle button.active.present{background:var(--green);color:#fff}
+  .toggle button.active.absent{background:var(--red);color:#fff}
+  .btn{display:inline-block;background:var(--teal);color:#fff;padding:11px 22px;border:none;border-radius:8px;font-weight:700;font-size:.9rem;cursor:pointer;font-family:inherit}
+  .btn:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .row-actions{display:flex;justify-content:space-between;align-items:center;margin-top:18px;flex-wrap:wrap;gap:10px}
+  .status{font-size:.85rem;opacity:.75}
+  .status.ok{color:var(--green);opacity:1;font-weight:700}
+  form{display:grid;gap:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  label{display:block;font-size:.85rem;margin-bottom:6px;opacity:.8}
+  input,textarea{width:100%;font-family:inherit;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.9rem}
+  textarea{min-height:80px;resize:vertical}
+  .assign-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+  .assign-item:last-child{border-bottom:none}
+  .assign-item h4{margin:0 0 4px;font-size:.98rem}
+  .assign-item p{margin:0;font-size:.82rem;opacity:.7}
+  .pill{font-size:.75rem;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px 10px;white-space:nowrap}
+  @media (max-width:600px){
+    .grid2{grid-template-columns:1fr}
+    th:nth-child(3),td:nth-child(3){display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <div class="brand">بوابة المعلم — قنافذ الرسمية</div>
+    <div class="who">أ. سارة يوسف &nbsp;·&nbsp;
+      <select id="classSelect" aria-label="اختر الصف">
+        <option>الروضة - أ</option>
+        <option>الأول - أ</option>
+        <option>الثاني - أ</option>
+        <option>الثالث - أ</option>
+        <option>الرابع - أ</option>
+        <option>الرابع - ب</option>
+        <option>الخامس - أ</option>
+        <option>السادس - أ</option>
+        <option>السابع - أ</option>
+        <option>الثامن - أ</option>
+        <option>التاسع - أ</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card">
+    <h2>تسجيل الحضور</h2>
+    <p class="sub">اضغط لتسجيل حالة كل طالب، ثم احفظ — يصل إشعار تلقائي لولي الأمر عند تسجيل غياب.</p>
+    <table>
+      <thead><tr><th>الطالب</th><th>الحالة</th><th></th></tr></thead>
+      <tbody id="attendanceBody"></tbody>
+    </table>
+    <div class="row-actions">
+      <button class="btn" id="saveAttendance">حفظ الحضور وإرسال الإشعارات</button>
+      <span class="status" id="attStatus"></span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>رفع واجب جديد</h2>
+    <p class="sub">سيظهر الواجب فوراً لطلاب الصف المحدد في بوابتهم.</p>
+    <form id="assignForm">
+      <div class="grid2">
+        <div>
+          <label for="aTitle">عنوان الواجب</label>
+          <input id="aTitle" required placeholder="مثال: تمارين الفصل الثالث">
+        </div>
+        <div>
+          <label for="aDue">تاريخ التسليم</label>
+          <input id="aDue" type="date" required>
+        </div>
+      </div>
+      <div>
+        <label for="aDesc">وصف الواجب (اختياري)</label>
+        <textarea id="aDesc" placeholder="تفاصيل أو تعليمات إضافية للطلاب"></textarea>
+      </div>
+      <div class="row-actions">
+        <button class="btn" type="submit">نشر الواجب</button>
+        <span class="status" id="assignStatus"></span>
+      </div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>الواجبات المنشورة</h2>
+    <p class="sub" id="assignSub">لا توجد واجبات منشورة بعد لهذا الصف.</p>
+    <div id="assignList"></div>
+  </section>
+
+</main>
+
+<script>
+  var STUDENTS = ["ليان عبدالله","يوسف الحسن","مريم فهد","عمر ناصر","جود سالم","تالا رامي","فارس مازن"];
+  var state = { attendance: {}, assignments: {} };
+
+  function loadState(){
+    try{
+      var raw = localStorage.getItem('qanafeth-teacher-demo');
+      if(raw) state = JSON.parse(raw);
+    }catch(e){ /* storage unavailable, start fresh */ }
+  }
+  function saveState(){
+    try{ localStorage.setItem('qanafeth-teacher-demo', JSON.stringify(state)); }catch(e){}
+  }
+
+  function currentClass(){ return document.getElementById('classSelect').value; }
+
+  function renderAttendance(){
+    var cls = currentClass();
+    if(!state.attendance[cls]) state.attendance[cls] = {};
+    var body = document.getElementById('attendanceBody');
+    body.innerHTML = "";
+    STUDENTS.forEach(function(name){
+      var status = state.attendance[cls][name] || 'present';
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td>'+name+'</td>' +
+        '<td><span class="pill">'+(status==='present' ? 'حاضر' : 'غائب')+'</span></td>' +
+        '<td>' +
+          '<div class="toggle">' +
+            '<button type="button" class="present '+(status==='present'?'active':'')+'" data-name="'+name+'" data-status="present">حاضر</button>' +
+            '<button type="button" class="absent '+(status==='absent'?'active':'')+'" data-name="'+name+'" data-status="absent">غائب</button>' +
+          '</div>' +
+        '</td>';
+      body.appendChild(tr);
+    });
+    document.getElementById('attStatus').textContent = "";
+    document.getElementById('attStatus').className = "status";
+  }
+
+  document.getElementById('attendanceBody').addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-status]');
+    if(!btn) return;
+    var cls = currentClass();
+    state.attendance[cls][btn.dataset.name] = btn.dataset.status;
+    renderAttendance();
+  });
+
+  document.getElementById('saveAttendance').addEventListener('click', function(){
+    saveState();
+    var el = document.getElementById('attStatus');
+    var cls = currentClass();
+    var absentCount = Object.values(state.attendance[cls]).filter(function(s){return s==='absent';}).length;
+    el.textContent = absentCount > 0
+      ? "تم الحفظ — تم إرسال إشعار لأولياء أمور "+absentCount+" طالب غائب."
+      : "تم الحفظ — جميع الطلاب حاضرون.";
+    el.className = "status ok";
+  });
+
+  function renderAssignments(){
+    var cls = currentClass();
+    var list = state.assignments[cls] || [];
+    var wrap = document.getElementById('assignList');
+    var sub = document.getElementById('assignSub');
+    wrap.innerHTML = "";
+    sub.textContent = list.length ? (list.length+" واجب منشور لهذا الصف.") : "لا توجد واجبات منشورة بعد لهذا الصف.";
+    list.slice().reverse().forEach(function(a){
+      var div = document.createElement('div');
+      div.className = 'assign-item';
+      div.innerHTML =
+        '<div><h4>'+a.title+'</h4><p>'+(a.desc || 'بدون وصف إضافي')+'</p></div>' +
+        '<span class="pill">تسليم: '+a.due+'</span>';
+      wrap.appendChild(div);
+    });
+  }
+
+  document.getElementById('assignForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var cls = currentClass();
+    if(!state.assignments[cls]) state.assignments[cls] = [];
+    state.assignments[cls].push({
+      title: document.getElementById('aTitle').value,
+      due: document.getElementById('aDue').value,
+      desc: document.getElementById('aDesc').value
+    });
+    saveState();
+    this.reset();
+    renderAssignments();
+    var el = document.getElementById('assignStatus');
+    el.textContent = "تم نشر الواجب لطلاب الصف.";
+    el.className = "status ok";
+  });
+
+  document.getElementById('classSelect').addEventListener('change', function(){
+    renderAttendance();
+    renderAssignments();
+  });
+
+  loadState();
+  renderAttendance();
+  renderAssignments();
+</script>
+
+</body>
+</html>

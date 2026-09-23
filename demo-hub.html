@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>عرض تجريبي - موقع قنافذ الرسمية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2A32; --paper:#F6F3EC; --teal:#12594F; --teal-2:#0D3F38; --gold:#C98A2C;
+    --card:#FFFFFF; --line:#E2DED2;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#EDEAE1; --paper:#141C20; --teal:#4FA093; --teal-2:#2E5C54; --gold:#E0A94A;
+      --card:#1B252A; --line:#2A363B;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#EDEAE1; --paper:#141C20; --teal:#4FA093; --teal-2:#2E5C54; --gold:#E0A94A;
+    --card:#1B252A; --line:#2A363B;
+  }
+  *{box-sizing:border-box}
+  html{scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans Arabic',sans-serif;line-height:1.6}
+  h1,h2,.brand{font-family:'Tajawal',sans-serif}
+  .wrap{max-width:760px;margin:0 auto;padding:56px 20px 60px}
+  .brand{font-weight:900;font-size:1.1rem;color:var(--teal-2);margin-bottom:6px}
+  h1{font-size:1.8rem;margin:0 0 10px}
+  .lead{opacity:.8;max-width:52ch;margin:0 0 36px}
+  .list{display:grid;gap:14px}
+  a.card{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;text-decoration:none;color:var(--ink)}
+  a.card:hover{border-color:var(--teal)}
+  a.card:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .card h3{margin:0 0 4px;font-size:1.05rem;font-family:'Tajawal'}
+  .card p{margin:0;font-size:.85rem;opacity:.7}
+  .arrow{font-size:1.3rem;opacity:.5}
+  .note{margin-top:36px;font-size:.85rem;opacity:.65;max-width:52ch}
+  #loginScreen{max-width:360px;margin:80px auto 0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px}
+  #loginScreen h2{margin:0 0 6px;font-size:1.3rem}
+  #loginScreen p.hint{margin:0 0 20px;font-size:.85rem;opacity:.7}
+  #loginScreen label{display:block;font-size:.85rem;margin-bottom:6px;opacity:.8}
+  #loginScreen input{width:100%;font-family:inherit;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.9rem;margin-bottom:14px}
+  #loginScreen .btn{width:100%;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:12px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit}
+  #loginScreen .btn:focus-visible,#loginScreen input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  #loginScreen .err{color:#B4433A;font-size:.85rem;min-height:1.2em;margin-top:10px}
+  #mainScreen{display:none}
+</style>
+</head>
+<body>
+
+<div id="loginScreen">
+  <div class="brand">قنافذ الرسمية</div>
+  <h2>تسجيل الدخول</h2>
+  <p class="hint">للعرض التجريبي فقط — استخدمي: admin@qanafeth · 1234</p>
+  <form id="loginForm">
+    <label for="loginUser">البريد الإلكتروني</label>
+    <input id="loginUser" required>
+    <label for="loginPass">كلمة المرور</label>
+    <input id="loginPass" type="password" required>
+    <button class="btn" type="submit">دخول</button>
+    <div class="err" id="loginErr"></div>
+  </form>
+</div>
+
+<div id="mainScreen">
+<div class="wrap">
+  <div class="brand">قنافذ الرسمية</div>
+  <h1>عرض تجريبي لموقع المدرسة</h1>
+  <p class="lead">أربع صفحات تجريبية تعرض فكرة الموقع المقترح. اضغط على أي بطاقة لفتح الصفحة المقابلة.</p>
+
+  <div class="list">
+    <a class="card" href="https://claude.ai/artifact/TDjaKyUreWXpGGAuc1Dht2" target="_blank" rel="noopener">
+      <div><h3>الصفحة الرئيسية</h3><p>تعريف بالمدرسة، مزاياها، ونموذج التسجيل</p></div>
+      <span class="arrow">‹</span>
+    </a>
+    <a class="card" href="https://claude.ai/artifact/RrmKPKysu61okRQWzysfQY" target="_blank" rel="noopener">
+      <div><h3>بوابة المعلم</h3><p>تسجيل الحضور ورفع الواجبات لكل صف</p></div>
+      <span class="arrow">‹</span>
+    </a>
+    <a class="card" href="https://claude.ai/artifact/Cixf2sPjyvBGvfvdYNFKuA" target="_blank" rel="noopener">
+      <div><h3>بوابة ولي الأمر</h3><p>العلامات، الحضور، الجدول، والواجبات</p></div>
+      <span class="arrow">‹</span>
+    </a>
+    <a class="card" href="https://claude.ai/artifact/1hYejXxFrcFyhdeXeHCKph" target="_blank" rel="noopener">
+      <div><h3>لوحة تحكم الإدارة</h3><p>الإعلانات، الصفوف، طلبات التسجيل، والمستخدمين</p></div>
+      <span class="arrow">‹</span>
+    </a>
+  </div>
+
+  <p class="note">هذه صفحات تجريبية بمحتوى وبيانات افتراضية لتوضيح الفكرة، وليست مربوطة ببعضها فعلياً بعد. تسجيل الدخول هنا شكلي فقط لأغراض العرض.</p>
+</div>
+</div>
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var user = document.getElementById('loginUser').value.trim();
+    var pass = document.getElementById('loginPass').value.trim();
+    if(user === 'admin@qanafeth' && pass === '1234'){
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('mainScreen').style.display = 'block';
+    } else {
+      document.getElementById('loginErr').textContent = 'بيانات الدخول غير صحيحة — جربي البيانات التجريبية الموضحة أعلاه.';
+    }
+  });
+</script>
+</body>
+</html>
+
